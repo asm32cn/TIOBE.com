@@ -18,6 +18,7 @@
 <!--
 
 (function(){
+	var _body = document.body;
 	var _matrixData = [['Jun 2018', 'Jun 2017', 'Change', 'Programming Language', 'Ratings', 'Change'],
 		['1', '1', '', 'Java', '15.368%', '+0.88%'],
 		['2', '2', '', 'C', '14.936%', '+8.09%'],
@@ -52,10 +53,12 @@
 
 	var _flagEx = ['▲', '▼', '↑', '↓'];
 
+	var _colors = ['#046', '#057', '#069', '#9ad', '#069', '#057'];
+
 	function compareInc(v1, v2){
 		var n1 = parseInt(v1),
 			n2 = parseInt(v2);
-		console.log(v1, n1, v2, n2)
+		// console.log(v1, n1, v2, n2)
 		return isNaN(n2) ? true : n1 < n2;
 	}
 
@@ -148,7 +151,8 @@
 		var sx = 600, sy = 300, st = 0, nCount = _matrix.length;
 		var _cache = [[]];
 		for(var r = 1; r < nCount; r++) {
-			_cache.push([ 0.01, parseFloat(_matrix[r][4].replace(/%$/, '')), 0, randColor() ]);
+			var color = r < 8 ? _colors[(r - 1) % _colors.length] : randColor();
+			_cache.push([ 0.01, parseFloat(_matrix[r][4].replace(/%$/, '')), 0, color ]);
 			st += _cache[r][1];
 			var ang1 = 3.141592653 / 50 * st, nx = 300 + 300 * Math.cos(ang1), ny = 300 - 300 * Math.sin(ang1);
 			_html += '<path fill="' + _cache[r][3] + '" d="M ' + sx.toFixed(3) + ',' + sy.toFixed(3) + ' A 300,300,0,0,0,' + nx.toFixed(3) + ',' + ny.toFixed(3) + ' L 300,300 Z"></path>';
@@ -188,7 +192,7 @@
 	}
 
 	var _h1 = document.createElement('h1');
-	var _body = document.body;
+
 	_h1.innerHTML = 'TIOBE Index for June 2018';
 	_body.appendChild(_h1);
 
