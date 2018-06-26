@@ -8,7 +8,7 @@ import base64, os, re
 
 _index = 'TIOBE-index.html'
 
-def TIOBE_gernate_index():
+def TIOBE_generate_index():
 
 	_templateData = \
 		'PCFkb2N0eXBlIGh0bWw+DQo8aHRtbCBsYW5nPSJlbiI+DQo8aGVhZD4NCjxtZXRhIGNoYXJzZXQ9IlVU' \
@@ -67,4 +67,4 @@ def TIOBE_gernate_index():
 
 if __name__ == '__main__':
 
-	TIOBE_gernate_index()
+	TIOBE_generate_index()
