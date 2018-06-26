@@ -21,7 +21,7 @@ def TIOBE_gernate_index():
 		'July': 7, 'August': 8, 'September': 9, 'October': 10, 'November': 11, 'December':12
 	}
 
-	_skipFiles = [ _index, '.git', 'TIOBE-gernate-index-py2.py', 'TIOBE-exchange-matrix-data.py']
+	_skipFiles = [ _index, '.git', 'TIOBE-generate-index-py2.py', 'TIOBE-exchange-matrix-data.py']
 
 	_template  = base64.b64decode( _templateData )
 
