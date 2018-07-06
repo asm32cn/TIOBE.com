@@ -41,6 +41,40 @@
 		['19', '13', 'change', 'Delphi/Object Pascal', '0.875%', '-1.28%'],
 		['20', '20', '', 'PL/SQL', '0.848%', '-0.72%']];
 
+
+	var _matrixData2 = [['Position', 'Programming Language', 'Ratings'],
+		['21', 'Dart', '0.803%'],
+		['22', 'SAS', '0.802%'],
+		['23', 'Scala', '0.662%'],
+		['24', 'Apex', '0.662%'],
+		['25', 'Transact-SQL', '0.649%'],
+		['26', 'Ada', '0.634%'],
+		['27', 'Lisp', '0.623%'],
+		['28', 'COBOL', '0.622%'],
+		['29', 'Scratch', '0.599%'],
+		['30', 'D', '0.594%'],
+		['31', 'LabVIEW', '0.523%'],
+		['32', 'Bash', '0.481%'],
+		['33', 'Clojure', '0.444%'],
+		['34', 'Logo', '0.387%'],
+		['35', 'Awk', '0.381%'],
+		['36', 'Lua', '0.372%'],
+		['37', 'Prolog', '0.337%'],
+		['38', 'Erlang', '0.328%'],
+		['39', 'Fortran', '0.317%'],
+		['40', 'Alice', '0.310%'],
+		['41', 'VBScript', '0.293%'],
+		['42', 'ABAP', '0.289%'],
+		['43', 'Julia', '0.281%'],
+		['44', 'ActionScript', '0.261%'],
+		['45', 'Rust', '0.258%'],
+		['46', 'Ladder Logic', '0.257%'],
+		['47', 'OpenCL', '0.254%'],
+		['48', 'IDL', '0.242%'],
+		['49', 'Kotlin', '0.234%'],
+		['50', 'REXX', '0.227%']];
+
+
 	if(typeof(_matrixData) == 'object' && _matrixData.length > 0){
 		_matrixData[0].push('Ratings');
 		_matrixData[0].push('Change');
@@ -191,6 +225,67 @@
 		// }, 1000);
 	}
 
+
+
+
+	if(typeof(_matrixData2) == 'object' && _matrixData2.length > 0){
+		_matrixData2[0].push('Ratings');
+		var lrs = _matrixData2.length;
+		for(var i = 1; i < lrs; i++){
+			_matrixData2[i].push(0);
+		}
+	}
+
+	function PA_js_showMatrix2(_matrix){
+		var _table = document.createElement('table');
+		with(_table){
+			cellSpacing = 0;
+			cellPadding = 5;
+			borderColor = '#666'
+			border = 1;
+			style.cssText = 'border-collapse: collapse; font-size: 12px;';
+		}
+		var _max = 0;
+		for(var r = 1, lr = _matrix.length; r < lr; r++) {
+			var _rowData = _matrix[r];
+			_rowData[3] = parseInt( 200 * parseFloat( _rowData[2].replace(/%/, '') ) );
+			if( _max < _rowData[3] ) _max = _rowData[3];
+		}
+
+		for(var r = 0, lr = _matrix.length; r < lr; r++) {
+			var _tr = document.createElement('tr');
+			var _rowData = _matrix[r];
+
+			var _em = document.createElement('em');
+			_em.className = 'bar';
+			_em.style.cssText = 'width:' + _rowData[3] + 'px';
+
+			for(var c = 0, lc = _rowData.length; c < lc; c++ ){
+				var _td = document.createElement('td');
+				if(r == 0 ){
+					_td.innerHTML = _rowData[c];
+					if( c == 3 ) _td.width = _max;
+				} else {
+					if( c < 3 ){
+						var _htmlData = _rowData[c];
+						if(c > 2){
+							_td.align = 'right';
+						} else if(c == 2) {
+							_td.align = 'center';
+						}
+						_td.innerHTML = _htmlData;
+
+					} else {
+						_td.appendChild(_em);
+					}
+				}
+				_tr.appendChild(_td);
+			}
+			_table.appendChild(_tr);
+		}
+		_body.appendChild(_table);
+	}
+
 	var _h1 = document.createElement('h1');
 
 	_h1.innerHTML = 'TIOBE Index for June 2018';
@@ -198,6 +293,11 @@
 
 	PA_js_showMatrix(_matrixData);
 	PA_js_showSvgChart(_matrixData);
+
+	_body.appendChild(document.createElement('p'));
+
+	PA_js_showMatrix2(_matrixData2);
+
 
 
 })();
