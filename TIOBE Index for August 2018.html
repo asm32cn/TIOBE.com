@@ -107,7 +107,7 @@
 			border = 1;
 			style.cssText = 'border-collapse: collapse; font-size: 12px;';
 		}
-		var _min = 0, _max = 0, _maxN;
+		var _min = 0, _max = 0;
 		for(var r = 1, lr = _matrix.length; r < lr; r++) {
 			var _rowData = _matrix[r];
 			_rowData[6] = parseInt( 10 * parseFloat( _rowData[4].replace(/%/, '') ) );
@@ -122,9 +122,12 @@
 			if( _min > _rowData[7] ) _min = _rowData[7];
 			if( _max < _rowData[7] ) _max = _rowData[7];
 		}
-		_maxN = Math.abs(_min);
-		var t = Math.abs(_max);
-		if( _maxN < t ) _maxN = t;
+		var _minX = Math.abs(_min);
+		var _maxX = Math.abs(_max);
+		var _maxT = _minX > _maxX ? _minX : _maxX;
+		if(_min > 0 || _minX < 20) _minX = 20;
+		var _widthX = (_min >= 0 || _max <= 0) ? _maxT : _minX + _maxX;
+
 
 		for(var r = 0, lr = _matrix.length; r < lr; r++) {
 			var _tr = document.createElement('tr');
@@ -134,15 +137,17 @@
 			_ems[0].className = 'bar';
 			_ems[0].style.cssText = 'width:' + _rowData[6] + 'px';
 			_ems[1].className = _rowData[7] > 0 ? 'barCU' : 'barCD';
+
 			var n = Math.abs(_rowData[7]);
-			var _left = _rowData[7] > 0 ? _maxN : _maxN + _rowData[7];
+			var _left = _min > 0 ? 20 : ( _rowData[7] > 0 ? _minX : _minX + _rowData[7] );
+
 			_ems[1].style.cssText = 'margin-left:' + _left + 'px; width:' + n + 'px';
 
 			for(var c = 0, lc = _rowData.length; c < lc; c++ ){
 				var _td = document.createElement('td');
 				if(r == 0 ){
 					_td.innerHTML = _rowData[c];
-					if( c == 7 ) _td.width = _maxN * 2;
+					if( c == 7 ) _td.width = _widthX;
 				} else {
 					if( c < 6 ){
 						var _htmlData = _rowData[c];
