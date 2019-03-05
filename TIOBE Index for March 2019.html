@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="Generator" content="EditPlus®">
+<title>TIOBE Index for March 2019</title>
+<style>
+	body { background-color: #a5cbf7; }
+	.bar { display:block; height:10px; background-color:#069;}
+	.barCU { display:block; height:10px; background-color:#069;}
+	.barCD { display:block; height:10px; background-color:#f00;}
+</style>
+</head>
+<body>
+
+<script type="text/javascript">
+<!--
+
+(function(){
+	var _body = document.body;
+	var _matrixData = [['Mar 2019', 'Mar 2018', 'Change', 'Programming Language', 'Ratings', 'Change'],
+		['1', '1', '', 'Java', '14.880%', '-0.06%'],
+		['2', '2', '', 'C', '13.305%', '+0.55%'],
+		['3', '4', 'change', 'Python', '8.262%', '+2.39%'],
+		['4', '3', 'change', 'C++', '8.126%', '+1.67%'],
+		['5', '6', 'change', 'Visual Basic .NET', '6.429%', '+2.34%'],
+		['6', '5', 'change', 'C#', '3.267%', '-1.80%'],
+		['7', '8', 'change', 'JavaScript', '2.426%', '-1.49%'],
+		['8', '7', 'change', 'PHP', '2.420%', '-1.59%'],
+		['9', '10', 'change', 'SQL', '1.926%', '-0.76%'],
+		['10', '14', 'change', 'Objective-C', '1.681%', '-0.09%'],
+		['11', '18', 'change', 'MATLAB', '1.469%', '+0.06%'],
+		['12', '16', 'change', 'Assembly language', '1.413%', '-0.29%'],
+		['13', '11', 'change', 'Perl', '1.302%', '-0.93%'],
+		['14', '20', 'change', 'R', '1.278%', '+0.15%'],
+		['15', '9', 'change', 'Ruby', '1.202%', '-1.54%'],
+		['16', '60', 'change', 'Groovy', '1.178%', '+1.04%'],
+		['17', '12', 'change', 'Swift', '1.158%', '-0.99%'],
+		['18', '17', 'change', 'Go', '1.016%', '-0.43%'],
+		['19', '13', 'change', 'Delphi/Object Pascal', '1.012%', '-0.78%'],
+		['20', '15', 'change', 'Visual Basic', '0.954%', '-0.79%']];
+
+
+	var _matrixData2 = [['Position', 'Programming Language', 'Ratings'],
+		['21', 'SAS', '0.929%'],
+		['22', 'PL/SQL', '0.734%'],
+		['23', 'Dart', '0.724%'],
+		['24', 'D', '0.618%'],
+		['25', 'Scratch', '0.549%'],
+		['26', 'COBOL', '0.522%'],
+		['27', 'Fortran', '0.472%'],
+		['28', 'Scala', '0.467%'],
+		['29', 'Lua', '0.418%'],
+		['30', 'Transact-SQL', '0.415%'],
+		['31', 'ABAP', '0.395%'],
+		['32', 'Lisp', '0.372%'],
+		['33', 'Prolog', '0.368%'],
+		['34', 'Scheme', '0.355%'],
+		['35', 'Rust', '0.310%'],
+		['36', 'Ada', '0.310%'],
+		['37', 'LabVIEW', '0.309%'],
+		['38', 'Logo', '0.296%'],
+		['39', 'Kotlin', '0.288%'],
+		['40', 'Ladder Logic', '0.241%'],
+		['41', 'Bash', '0.213%'],
+		['42', 'Julia', '0.210%'],
+		['43', 'Haskell', '0.207%'],
+		['44', 'Hack', '0.191%'],
+		['45', 'PowerShell', '0.180%'],
+		['46', 'Awk', '0.176%'],
+		['47', 'ML', '0.163%'],
+		['48', 'PL/I', '0.163%'],
+		['49', 'Erlang', '0.155%'],
+		['50', 'RPG', '0.152%']];
+
+
+
+	if(typeof(_matrixData) == 'object' && _matrixData.length > 0){
+		_matrixData[0].push('Ratings');
+		_matrixData[0].push('Change');
+		var lrs = _matrixData.length;
+		for(var i = 1; i < lrs; i++){
+			_matrixData[i].push(0);
+			_matrixData[i].push(0);
+		}
+	}
+
+	var _flagEx = ['▲', '▼', '↑', '↓'];
+
+	var _colors = ['#046', '#057', '#069', '#9ad', '#069', '#057'];
+
+	function compareInc(v1, v2){
+		var n1 = parseInt(v1),
+			n2 = parseInt(v2);
+		// console.log(v1, n1, v2, n2)
+		return isNaN(n2) ? true : n1 < n2;
+	}
+
+	function PA_js_showMatrix(_matrix){
+		var _table = document.createElement('table');
+		with(_table){
+			cellSpacing = 0;
+			cellPadding = 5;
+			borderColor = '#666'
+			border = 1;
+			style.cssText = 'border-collapse: collapse; font-size: 12px;';
+		}
+		var _min = 0, _max = 0;
+		for(var r = 1, lr = _matrix.length; r < lr; r++) {
+			var _rowData = _matrix[r];
+			_rowData[6] = parseInt( 10 * parseFloat( _rowData[4].replace(/%/, '') ) );
+			_rowData[7] = 10 * parseFloat( _rowData[5].replace(/%/, '') );
+			if( _rowData[7] > 0 && _rowData[7] < 1 ){
+				_rowData[7] = 1;
+			} else if( _rowData[7] < 0 && _rowData[7] > -1 ) {
+				_rowData[7] = -1;
+			} else {
+				_rowData[7] = parseInt( _rowData[7] );
+			}
+			if( _min > _rowData[7] ) _min = _rowData[7];
+			if( _max < _rowData[7] ) _max = _rowData[7];
+		}
+		var _minX = Math.abs(_min);
+		var _maxX = Math.abs(_max);
+		var _maxT = _minX > _maxX ? _minX : _maxX;
+		if(_min > 0 || _minX < 20) _minX = 20;
+		var _widthX = (_min >= 0 || _max <= 0) ? _maxT : _minX + _maxX;
+
+
+		for(var r = 0, lr = _matrix.length; r < lr; r++) {
+			var _tr = document.createElement('tr');
+			var _rowData = _matrix[r];
+
+			var _ems = [document.createElement('em'), document.createElement('em')];
+			_ems[0].className = 'bar';
+			_ems[0].style.cssText = 'width:' + _rowData[6] + 'px';
+			_ems[1].className = _rowData[7] > 0 ? 'barCU' : 'barCD';
+
+			var n = Math.abs(_rowData[7]);
+			var _left = _min > 0 ? 20 : ( _rowData[7] > 0 ? _minX : _minX + _rowData[7] );
+
+			_ems[1].style.cssText = 'margin-left:' + _left + 'px; width:' + n + 'px';
+
+			for(var c = 0, lc = _rowData.length; c < lc; c++ ){
+				var _td = document.createElement('td');
+				if(r == 0 ){
+					_td.innerHTML = _rowData[c];
+					if( c == 7 ) _td.width = _widthX;
+				} else {
+					if( c < 6 ){
+						var _htmlData = _rowData[c];
+						if(c == 2 && _rowData[0] != _rowData[1]){
+							_htmlData = compareInc(_rowData[0], _rowData[1]) ? _flagEx[0] : _flagEx[1];
+						}else{
+							_htmlData = _rowData[c];
+						}
+						if(c > 3){
+							_td.align = 'right';
+						} else if(c == 2) {
+							_td.align = 'center';
+						}
+						_td.innerHTML = _htmlData;
+
+					} else {
+						var ps = c == 6 ? 0 : 1;
+						_td.appendChild(_ems[ ps ]);
+					}
+				}
+				_tr.appendChild(_td);
+			}
+			_table.appendChild(_tr);
+		}
+		_body.appendChild(_table);
+	}
+
+	function PA_js_showSvgChart(_matrix){
+		var _div = document.createElement('div');
+		_div.style.cssText = 'position: absolute; top:20px; left:800px; width:600px; height:600px;';
+		var _html = '<svg version="1.1" height="100%" width="100%" xmlns="http://www.w3.org/2000/svg"><g>f';
+		var colorElement = '0123456789abcdef';
+
+		function _rand(n){
+			return parseInt(Math.random() * n);
+		}
+
+		function randColor(){
+			return '#' + colorElement[_rand(16)] + colorElement[_rand(16)] + colorElement[_rand(16)];
+		}
+
+		var sx = 600, sy = 300, st = 0, nCount = _matrix.length;
+		var _cache = [[]];
+		for(var r = 1; r < nCount; r++) {
+			var color = r < 8 ? _colors[(r - 1) % _colors.length] : randColor();
+			_cache.push([ 0.01, parseFloat(_matrix[r][4].replace(/%$/, '')), 0, color ]);
+			st += _cache[r][1];
+			var ang1 = 3.141592653 / 50 * st, nx = 300 + 300 * Math.cos(ang1), ny = 300 - 300 * Math.sin(ang1);
+			_html += '<path fill="' + _cache[r][3] + '" d="M ' + sx.toFixed(3) + ',' + sy.toFixed(3) + ' A 300,300,0,0,0,' + nx.toFixed(3) + ',' + ny.toFixed(3) + ' L 300,300 Z"></path>';
+			// _html += '<path shape-rendering="default"></path>';
+			sx = nx; sy = ny;
+		}
+		_html += '</g></svg>';
+		_div.innerHTML = _html;
+		_body.appendChild(_div);
+
+		// var _paths = _div.getElementsByTagName('path');
+		// var intervalId = setInterval(function(){
+		// 	var sx = 600, sy = 300, st = 0, step = 0.1;
+		// 	var nDone = 1;
+
+		// 	for(var r = 1; r < nCount; r++) {
+		// 		// console.log( JSON.stringify(_cache[r]) );
+		// 		if( _cache[r][2] == 0 && _cache[r][0] + step <= _cache[r][1] ){
+		// 			_cache[r][0] += step;
+		// 		} else {
+		// 			_cache[r][0] = _cache[r][1];
+		// 			_cache[r][2] = 1;
+		// 			nDone++;
+		// 		}
+		// 		st += _cache[r][0];
+		// 		var ang1 = 3.141592653 / 50 * st, nx = 300 + 300 * Math.cos(ang1), ny = 300 - 300 * Math.sin(ang1);
+		// 		sx = nx; sy = ny;
+
+		// 		_paths[r-1].style.cssText = 'fill: ' + _cache[r][3] + '; d: path("M' + sx.toFixed(3) + ' ' + sy.toFixed(3) + ' A 300 300 0 0 0 ' + nx.toFixed(3) + ' ' + ny.toFixed(3) + ' L 300 300 Z")';
+		// 	}
+
+		// 	if( nDone == nCount){
+		// 		clearInterval(intervalId);
+		// 	}
+
+		// }, 1000);
+	}
+
+
+
+
+	if(typeof(_matrixData2) == 'object' && _matrixData2.length > 0){
+		_matrixData2[0].push('Ratings');
+		var lrs = _matrixData2.length;
+		for(var i = 1; i < lrs; i++){
+			_matrixData2[i].push(0);
+		}
+	}
+
+	function PA_js_showMatrix2(_matrix){
+		var _table = document.createElement('table');
+		with(_table){
+			cellSpacing = 0;
+			cellPadding = 5;
+			borderColor = '#666'
+			border = 1;
+			style.cssText = 'border-collapse: collapse; font-size: 12px;';
+		}
+		var _max = 0;
+		for(var r = 1, lr = _matrix.length; r < lr; r++) {
+			var _rowData = _matrix[r];
+			_rowData[3] = parseInt( 200 * parseFloat( _rowData[2].replace(/%/, '') ) );
+			if( _max < _rowData[3] ) _max = _rowData[3];
+		}
+
+		for(var r = 0, lr = _matrix.length; r < lr; r++) {
+			var _tr = document.createElement('tr');
+			var _rowData = _matrix[r];
+
+			var _em = document.createElement('em');
+			_em.className = 'bar';
+			_em.style.cssText = 'width:' + _rowData[3] + 'px';
+
+			for(var c = 0, lc = _rowData.length; c < lc; c++ ){
+				var _td = document.createElement('td');
+				if(r == 0 ){
+					_td.innerHTML = _rowData[c];
+					if( c == 3 ) _td.width = _max;
+				} else {
+					if( c < 3 ){
+						var _htmlData = _rowData[c];
+						if(c > 2){
+							_td.align = 'right';
+						} else if(c == 2) {
+							_td.align = 'center';
+						}
+						_td.innerHTML = _htmlData;
+
+					} else {
+						_td.appendChild(_em);
+					}
+				}
+				_tr.appendChild(_td);
+			}
+			_table.appendChild(_tr);
+		}
+		_body.appendChild(_table);
+	}
+
+	var _h1 = document.createElement('h1');
+
+	_h1.innerHTML = 'TIOBE Index for March 2019';
+	_body.appendChild(_h1);
+
+	PA_js_showMatrix(_matrixData);
+	PA_js_showSvgChart(_matrixData);
+
+	_body.appendChild(document.createElement('p'));
+
+	PA_js_showMatrix2(_matrixData2);
+
+
+
+})();
+	
+//-->
+</script>
+
+</body>
+</html>
